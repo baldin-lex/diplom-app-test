@@ -54,7 +54,7 @@ pipeline {
       steps {
         script {
           withKubeConfig(credentialsId: 'k8s-credentials', serverUrl: 'https://84.201.180.234:6443') {
-            sh 'kubectl apply -f "myapp-deploy.yml"'
+            sh 'kubectl apply -f myapp-deploy.yml'
           }
         }
       }
