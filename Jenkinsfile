@@ -2,6 +2,7 @@ pipeline {
   environment {
     dockerimagename = "baldinlex/diplom-app"
     dockerImage = ""
+    
   }
   agent any
   stages {
