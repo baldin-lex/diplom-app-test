@@ -55,9 +55,6 @@ pipeline {
         script {
           withKubeConfig([credentialsId: 'k8s-credentials',
                           serverUrl: '${CLUSTER_URL}',
-                          contextName: 'kubernetes-admin@cluster.local',
-                          clusterName: 'cluster.local',
-                          namespace: 'stage'
                           ]) {
             sh 'kubectl apply -f myapp-deploy.yml'
           }
