@@ -2,7 +2,6 @@ pipeline {
   environment {
     dockerimagename = "baldinlex/diplom-app"
     dockerImage = ""
-    
   }
   agent any
   stages {
@@ -53,11 +52,16 @@ pipeline {
     stage('Deploying myapp-deploy to Kubernetes') {
       steps {
         script {
-          withKubeConfig([credentialsId: 'k8s-credentials', serverUrl: "${CLUSTER_URL}", namespace: "${CLUSTER_NAMESPACE}"]) {
+          withKubeConfig([credentialsId: 'k8s-credentials',
+                          caCertificate: '${CA-CERTIFICATE}',
+                          serverUrl: '${CLUSTER_URL}',
+                          contextName: 'kubernetes-admin@cluster.local',
+                          clusterName: 'cluster.local',
+                          namespace: 'stage'
+                          ]) {
             sh 'kubectl get pods'
           }
         }
       }
     }
-  }    
-} 
+  }
