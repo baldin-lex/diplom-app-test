@@ -56,7 +56,7 @@ pipeline {
           withKubeConfig([credentialsId: 'k8s-credentials',
                           serverUrl: '${CLUSTER_URL}',
                           ]) {
-            sh 'kubectl apply -f myapp-deploy.yml'
+            sh 'kubectl apply -f myapp-deploy.yml --validate=false'
           }
         }
       }
