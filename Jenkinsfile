@@ -59,7 +59,7 @@ pipeline {
                           clusterName: 'cluster.local',
                           namespace: 'stage'
                           ]) {
-            sh 'kubectl get pods'
+            sh 'kubectl apply -f myapp-deploy.yml'
           }
         }
       }
