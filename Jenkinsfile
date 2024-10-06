@@ -53,7 +53,7 @@ pipeline {
     stage('Deploying myapp-deploy to Kubernetes') {
       steps {
         script {
-          withKubeConfig(credentialsId: 'k8s-credentials', serverUrl: 'https://84.201.180.234:6443') {
+          withKubeConfig([credentialsId: 'kubernetes-creds', serverUrl: "${CLUSTER_URL}", namespace: "${CLUSTER_NAMESPACE}"]) {
             sh 'kubectl get pods'
           }
         }
