@@ -54,7 +54,7 @@ pipeline {
       steps {
         script {
           withKubeConfig([credentialsId: 'k8s-credentials', serverUrl: "${CLUSTER_URL}", namespace: "${CLUSTER_NAMESPACE}"]) {
-            sh 'kubectl apply -f myapp-deploy.yml'
+            sh 'kubectl get pods'
           }
         }
       }
