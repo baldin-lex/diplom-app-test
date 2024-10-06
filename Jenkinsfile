@@ -54,7 +54,6 @@ pipeline {
       steps {
         script {
           withKubeConfig([credentialsId: 'k8s-credentials',
-                          caCertificate: '${CA-CERTIFICATE}',
                           serverUrl: '${CLUSTER_URL}',
                           contextName: 'kubernetes-admin@cluster.local',
                           clusterName: 'cluster.local',
